@@ -11,33 +11,12 @@ resultados correspondientes.
 SELECT 
     h.nombre,
     h.funcion,
-    /*
-    Datos de la habilidad a consultar
-    */
     cantPjsPorHab.cant AS cantidad_personajes,
-    /*
-    Cantidad de personajes que tienen la habilidad
-    */
     SUM(cantMisCompPorJugador.cant) AS cantidad_misiones_completadas,
-    /*
-    Devuelve la sumatoria de misiones completas por personajes
-    o sea si Joker completo la mision 1001 y 1002 y Morgana completo la mision 1001
-    y ambos tienen la habilidad 1, la habilidad 1 tiene cantidad_misiones_completadas = 3
-    */
     ROUND(AVG(p.EXPERIENCIA),2) AS promedio_experiencia,
-    /*
-	    Promedio de experiencia de todos los personajes que tienen la habilidad
-    */
     MIN(fechaFinPorJugador.fechaFin) AS fecha_fin_primera_mision,
-    /*
-    Fecha mas antigua de completitud de una mision hecha por personajes con la habilidad
-    */
     maxRecompensaPjXHab.NOMBREPERSONAJE AS personaje_maxima_recompensa,
     CASE 
-	    /*
-	    Este case es para categorizar 
-	    dependiendo la cantidad de personajes por habilidad
-	    */
         WHEN cantPjsPorHab.cant > 5 THEN 'popular'
         ELSE 'no popular'
     END AS categorizacion
@@ -69,11 +48,6 @@ FROM
               AND mj3.ESTADO = 'completada'
         )
     ) cantMisCompPorJugador,
-    /*
-	    cantMisCompPorJugador devuelve la cantidad misiones completas por personaje
-	    ademas se le hace un union para los casos de personajes sin misiones completadas
-	    para un join exitoso luego
-    */
     (
         SELECT p4.NOMBREPERSONAJE, MIN(mj4.FECHAFIN) AS fechaFin
         FROM MISION_JUGADOR mj4, PERSONAJE p4, JUGADOR j4
@@ -91,19 +65,7 @@ FROM
               AND mj5.FECHAFIN IS NOT NULL
         )
     ) fechaFinPorJugador,
-    /*
-		    fechaFinPorJugador devuelve el nombre personaje con la menor
-		    fecha fin de sus misiones, ademas se le hace un union para personajes
-		    sin misiones con fechafin
-		 */
     (
-	    /*
-				El objetivo de esta subconsulta es devolver las habilidad y nombrepersonajes
-				con la maxima recompensa de mision especial
-				o sea, que devuelve un registro para cada habilidad y LOS personaje con 
-				maxima recompensa obtenida en misiones especiales, para luego hacer un join
-				con habilidad personje 
-			*/
         SELECT hp.id AS id, p.NOMBREPERSONAJE AS nombrepersonaje, MAX(m.recompensa) AS max_recompensa
         FROM HABILIDAD_PERSONAJE hp,
              PERSONAJE p,
@@ -143,11 +105,7 @@ FROM
                 )
           )
         GROUP BY hp.id, p.NOMBREPERSONAJE
-
         UNION
-			/*
-			Para cuando la habilidad no tiene personajes con misiones especiales
-			*/
         SELECT h.id AS id, NULL AS nombrepersonaje, NULL AS max_recompensa
         FROM HABILIDAD h
         WHERE NOT EXISTS (
@@ -165,10 +123,6 @@ FROM
               AND m.tipo = 'especial'
         )
     ) maxRecompensaPjXHab
-    /*
-    maxRecompensaPjXHab devulve las habilidades con sus personajes con maxima 
-    recompensa de misiones especiales
-    */
 WHERE 
     h.id = hp.id
     AND hp.NOMBREPERSONAJE = p.NOMBREPERSONAJE
