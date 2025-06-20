@@ -27,7 +27,7 @@ FROM JUGADOR j, (
 		TO_CHAR(fecha, 'YYYY-MM') AS mes
 	FROM LOGRO l
 	WHERE l.fecha BETWEEN TO_DATE('01/01/2025', 'DD/MM/YYYY') 
-			  AND TO_DATE('31/12/2025', 'DD/MM/YYYY')
+			  AND TO_DATE('01/01/2026', 'DD/MM/YYYY')
 	GROUP BY EMAIL, TO_CHAR(fecha, 'YYYY-MM')
 ) logXjug,
 (

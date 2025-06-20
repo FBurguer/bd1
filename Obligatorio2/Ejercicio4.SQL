@@ -13,6 +13,15 @@ SELECT p.NOMBREPERSONAJE, p.EXPERIENCIA, p.HORAS
             AND j.NOMBREPERSONAJE = p.NOMBREPERSONAJE
             AND UPPER(mj.estado) = 'EN PROGRESO'
             ) -- Queremos contar solo personajes con misiones en progreso
+		 AND EXISTS ( 
+				        SELECT 1 
+				        FROM HABILIDAD h
+				        WHERE UPPER(h.FUNCION) = 'ATAQUE'
+				        ); 
+        /*
+	        Esto valida que al menos exista una habilidad de tipo ataque, 
+	        para que no devuelva todos los personajes en caso contrario.
+        */
         AND NOT EXISTS (
 				            SELECT 1 
 				            FROM HABILIDAD h
@@ -28,18 +37,9 @@ SELECT p.NOMBREPERSONAJE, p.EXPERIENCIA, p.HORAS
 		        Este doble NOT EXISTS, cumple la funcion del cociente,
 		        o sea, Personajes que tienen todas las habilidad de 'ataque'
         */
-        AND EXISTS ( 
-				        SELECT 1 
-				        FROM HABILIDAD h
-				        WHERE UPPER(h.FUNCION) = 'ATAQUE'
-				        ); 
-        /*
-	        Esto valida que al menos exista una habilidad de tipo ataque, 
-	        para que no devuelva todos los personajes en caso contrario.
-        */
+       
         
-        
-/*
-Analogamente al anterior, ambas condiciones estan en el mismo where conectados
+/*e
+Analogamente al anterior, ambas condiciones estan en el mismo whre conectados
 por and, entonces, el resultado cumplira a ambas condiciones.
 */

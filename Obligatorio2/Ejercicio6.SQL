@@ -9,7 +9,7 @@ WHERE EXISTS ( SELECT 1
 								WHERE
 										j.EMAIL = mj.EMAIL
 										AND mj.CODIGO = m.CODIGO
-										and j.NOMBREPERSONAJE = p.NOMBREPERSONAJE
+										AND j.NOMBREPERSONAJE = p.NOMBREPERSONAJE
 										AND UPPER(m.TIPO) = 'SECUNDARIA'
 										/* 
 										Esta subconsulta hace que solo se tomen en cuenta misiones
