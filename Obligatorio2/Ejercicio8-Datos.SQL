@@ -82,12 +82,10 @@ INSERT INTO mision_jugador VALUES (1007, 'makoto@p5.jp', NULL, 'en progreso');
 INSERT INTO mision_jugador VALUES (1008, 'makoto@p5.jp', NULL, 'en progreso');
 INSERT INTO mision_jugador VALUES (1006, 'makoto@p5.jp', NULL, 'en progreso');
 INSERT INTO mision_jugador VALUES (1002, 'makoto@p5.jp', NULL, 'en progreso');
-
 INSERT INTO mision_jugador VALUES (1001, 'yusuke@p5.jp', NULL, 'en progreso');
 INSERT INTO mision_jugador VALUES (1008, 'yusuke@p5.jp', NULL, 'en progreso');
 INSERT INTO mision_jugador VALUES (1006, 'yusuke@p5.jp', NULL, 'en progreso');
 INSERT INTO mision_jugador VALUES (1007, 'yusuke@p5.jp', NULL, 'en progreso');
-
 
 INSERT INTO mision_jugador VALUES (1001, 'futaba@p5.jp', NULL, 'no iniciada');
 INSERT INTO mision_jugador VALUES (1001, 'haru@p5.jp', NULL, 'no iniciada');

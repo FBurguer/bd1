@@ -49,7 +49,3 @@ INSERT INTO mision_jugador VALUES (1007, 'joker@p5.jp', NULL, 'en progreso');
 INSERT INTO mision_jugador VALUES (1008, 'morgana@p5.jp', NULL, 'en progreso');
 INSERT INTO mision_jugador VALUES (1007, 'ryuji@p5.jp', NULL, 'en progreso');
 
-
---Solo Joker y Panther tienen todas las habilidades de ataque, Morgana y Skull tambien tienen habilidades de ataque pero no todas
--- y de los 4, Panther no tiene misiones en progreso
--- Entonces solo debe listar a Joker

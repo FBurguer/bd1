@@ -49,32 +49,15 @@ INSERT INTO mision_jugador VALUES (1008, 'yusuke@p5.jp', TO_DATE('22/01/2025','D
 
 --LOGROS
 
---Joker tiene un logro en mision principal pero es anterior a los 15 dias, por lo tanto Joker no debe ser listado
 INSERT INTO logro VALUES ('Sigilo Supremo', 'Finalizar sin ser detectado', 1002, 'joker@p5.jp', 150, SYSDATE - 15);
-
---Morgana tiene un logro en mision especial pero es anterior a los 15 dias, por lo tanto Morgana no debe ser listado
 INSERT INTO logro VALUES ('Apoyo Vital', 'Curar a 3 aliados', 1001, 'makoto@p5.jp', 120, SYSDATE - 15);
-
---Skull tiene un logro de mision principal pero da menos de 50 puntos, por lo tanto Skull no debe ser listado
 INSERT INTO logro VALUES ('Destructor', 'Eliminar 5 enemigos', 1002, 'ryuji@p5.jp', 49, SYSDATE - 3);
-
---Panther tiene un logro dentro de los 15 dias en mision principal que da mas de 50 puntos y otro de mision especial que da menos de 50 puntos
---Como el logro en mision principal no dio mas de 50 puntos, significa que Panther no tiene un logro pincipal y un logro de mision especial
--- que cumplan las condiciones simultaneamente, por lo tanto, Panther debe ser listada
 INSERT INTO logro VALUES ('Impacto Floral', 'Ataque final con estilo', 1001, 'ann@p5.jp', 120, SYSDATE - 3);
 INSERT INTO logro VALUES ('Estratega', 'Derrotar sin recibir daño', 1002, 'ann@p5.jp', 50, SYSDATE - 3);
-
---Queen tiene 4 logros, 2 de misiones especiales y 2 de misiones principales, 
---Sigilo Supremo+ es anterior a 15 dias y Maestro del Arte da menos de 40 puntos, por lo tanto no son considerados
--- Imparable y Técnica Precisa cumplen las condiciones de ser de mision principal y especial, dan mas de 50 puntos y fueron obtenidos en menos de 15 dias
--- pero como Queen tiene esos dos logros simultaneamente, no es listada
 INSERT INTO logro VALUES ('Sigilo Supremo+', 'Finalizar sin ser detectado otra vez', 1005, 'makoto@p5.jp', 100, SYSDATE - 15);
 INSERT INTO logro VALUES ('Maestro del Arte', 'Derrotar al jefe', 1006, 'makoto@p5.jp', 40, SYSDATE - 14);
-INSERT INTO logro VALUES ('Imparable', 'Derrotar al jefe sin morir', 1001, 'makoto@p5.jp', 55, SYSDATE - 5);
+INSERT INTO logro VALUES ('Imparable', 'Derrotar al jefe sin morir', 1001, 'makoto@p5.jp', 51, SYSDATE - 14);
 INSERT INTO logro VALUES ('Técnica Precisa', 'No fallar ni un ataque',1002, 'makoto@p5.jp', 100, SYSDATE - 10);
-
---Fox tiene un logro de mision especial que cumple las condiciones y 4 de misiones principales que no
--- Por lo tanto, debe ser listado
 INSERT INTO logro VALUES ('Maestro del Sigilo', 'No ser detectado en toda la misión', 1001, 'yusuke@p5.jp', 110, SYSDATE - 5);
 INSERT INTO logro VALUES ('Despertar de la Magia', 'Curar a 5 aliados en una batalla', 1002, 'yusuke@p5.jp', 50, SYSDATE - 5);
 INSERT INTO logro VALUES ('Tiempo Perfecto', 'Completar la misión en tiempo récord', 1006, 'yusuke@p5.jp', 120, SYSDATE - 15);
